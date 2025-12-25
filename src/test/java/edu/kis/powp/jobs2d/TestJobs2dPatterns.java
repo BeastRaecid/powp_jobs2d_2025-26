@@ -1,5 +1,6 @@
 package edu.kis.powp.jobs2d;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
@@ -7,6 +8,7 @@ import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
@@ -15,6 +17,7 @@ import edu.kis.powp.jobs2d.events.FigureScript1OptionListener;
 import edu.kis.powp.jobs2d.events.FigureScript2OptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.lines.CustomLine;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -54,6 +57,11 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver specialDriver = new LineDrawerAdapter(drawerController, LineFactory.getSpecialLine(), "Special");
 		DriverFeature.addDriver("Special drawer", specialDriver);
+
+		ILine customLine = new CustomLine(Color.RED, 3, true);
+
+		Job2dDriver customDriver = new LineDrawerAdapter(drawerController, customLine, "Custom");
+		DriverFeature.addDriver("Custom drawer", customDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
