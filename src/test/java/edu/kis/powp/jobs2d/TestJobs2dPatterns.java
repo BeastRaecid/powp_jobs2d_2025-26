@@ -11,10 +11,14 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.drivers.JaneDriver;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
+import edu.kis.powp.jobs2d.events.JaneOptionListener;
 import edu.kis.powp.jobs2d.events.FigureScript1OptionListener;
 import edu.kis.powp.jobs2d.events.FigureScript2OptionListener;
+import edu.kis.powp.jobs2d.events.JaneOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.lines.CustomLine;
@@ -32,9 +36,12 @@ public class TestJobs2dPatterns {
 			DriverFeature.getDriverManager());
 		FigureScript2OptionListener figureScript2OptionListener = new FigureScript2OptionListener(
 			DriverFeature.getDriverManager());
+		JaneOptionListener JaneOptionListener = new JaneOptionListener(
+			new JaneDriver(0, 0));
 
 		application.addTest("Figure Joe 1", figureScript1OptionListener);
 		application.addTest("Figure Joe 2", figureScript2OptionListener);
+		application.addTest("Figure Jane 1", JaneOptionListener);
 	}
 
 	/**
